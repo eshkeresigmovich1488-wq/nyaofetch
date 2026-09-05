@@ -16,6 +16,10 @@ public static class Program
 
     public static int Main(string[] args)
     {
+        // Must happen before ANY output - otherwise cmd.exe/conhost print
+        // raw escape codes as text instead of interpreting them as colors.
+        Renderer.EnableVirtualTerminal();
+
         string? imagePath = null;
         string? gifPath = null;
         int cols = 32, rows = 16;

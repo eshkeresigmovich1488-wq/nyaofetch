@@ -114,7 +114,7 @@ public static class Renderer
 
     public static void PrintFrame(AnsiFrame frame)
     {
-        EnsureVirtualTerminal();
+        EnableVirtualTerminal();
         var sb = new StringBuilder();
         foreach (var line in frame) sb.Append(line).Append('\n');
         Console.Out.Write(sb.ToString());
@@ -124,7 +124,7 @@ public static class Renderer
     /// <summary>Moves the cursor back up so the next frame overwrites this one in place.</summary>
     public static void CursorHome(int frameHeightLines) => Console.Write($"\x1b[{frameHeightLines}A");
 
-    private static void EnsureVirtualTerminal()
+    public static void EnableVirtualTerminal()
     {
         if (_vtEnabled) return;
         _vtEnabled = true;
