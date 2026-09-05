@@ -198,3 +198,4 @@ C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\obj\Debug\ne
 C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\obj\Debug\net8.0-windows\win-x64\nyaofetch.pdb
 C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\obj\Debug\net8.0-windows\win-x64\nyaofetch.genruntimeconfig.cache
 C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\obj\Debug\net8.0-windows\win-x64\ref\nyaofetch.dll
+C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\obj\Debug\net8.0-windows\win-x64\nyaofetch.sourcelink.json

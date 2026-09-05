@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nyaofetch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f371dfb45c986c32c1dd999b62f537cb1cbd2152")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a66fd3f9b696a1883fa4ab278a3db9047acef396")]
 [assembly: System.Reflection.AssemblyProductAttribute("nyaofetch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nyaofetch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

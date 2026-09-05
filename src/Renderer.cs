@@ -130,16 +130,41 @@ public static class Renderer
         _vtEnabled = true;
 
         // Required on cmd.exe / older conhost so ANSI escape codes actually render.
-        var handle = NativeConsole.GetStdHandle(-11); // STD_OUTPUT_HANDLE
+        // We open CONOUT$ directly (rather than trusting STD_OUTPUT_HANDLE) because
+        // that's the handle guaranteed to be the real console, and per MS docs
+        // ENABLE_VIRTUAL_TERMINAL_PROCESSING only takes effect together with
+        // ENABLE_PROCESSED_OUTPUT.
+        var handle = NativeConsole.CreateFileW(
+            "CONOUT$",
+            NativeConsole.GENERIC_READ | NativeConsole.GENERIC_WRITE,
+            NativeConsole.FILE_SHARE_WRITE,
+            IntPtr.Zero,
+            NativeConsole.OPEN_EXISTING,
+            0,
+            IntPtr.Zero);
+
+        if (handle == IntPtr.Zero || handle == new IntPtr(-1)) return;
+
         if (NativeConsole.GetConsoleMode(handle, out uint mode))
         {
-            NativeConsole.SetConsoleMode(handle, mode | 0x0004); // ENABLE_VIRTUAL_TERMINAL_PROCESSING
+            const uint ENABLE_PROCESSED_OUTPUT = 0x0001;
+            const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
+            NativeConsole.SetConsoleMode(handle, mode | ENABLE_PROCESSED_OUTPUT | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
         }
     }
 }
 
 internal static class NativeConsole
 {
+    internal const uint GENERIC_READ = 0x80000000;
+    internal const uint GENERIC_WRITE = 0x40000000;
+    internal const uint FILE_SHARE_WRITE = 0x2;
+    internal const uint OPEN_EXISTING = 3;
+
+    [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+    internal static extern IntPtr CreateFileW(string lpFileName, uint dwDesiredAccess, uint dwShareMode,
+        IntPtr lpSecurityAttributes, uint dwCreationDisposition, uint dwFlagsAndAttributes, IntPtr hTemplateFile);
+
     [System.Runtime.InteropServices.DllImport("kernel32.dll")]
     internal static extern IntPtr GetStdHandle(int nStdHandle);
 
