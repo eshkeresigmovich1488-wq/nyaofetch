@@ -1,0 +1,2 @@
+C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\bin\Release\net8.0-windows\win-x64\publish\nyaofetch.pdb
+C:\Users\ZT_MATADOR\Desktop\project codebase\nyaofetch\nyaofetch-cs\bin\Release\net8.0-windows\win-x64\publish\nyaofetch.exe
